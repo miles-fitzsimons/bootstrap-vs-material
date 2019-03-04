@@ -1,26 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Button from "react-bootstrap/Button";
+import Button2 from "@material-ui/core/Button";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { x: 0 };
+    this.onClickButton = this.onClickButton.bind(this);
+  }
+
+  onClickButton() {
+    this.setState({ x: this.state.x + 1 });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <React.Fragment>
+        <h1>Hi</h1>
+        <div className="button" onClick={() => this.onClickButton()}>
+          {this.state.x}
+        </div>
+        <Button variant="primary" onClick={() => this.onClickButton()}>
+          {this.state.x}
+        </Button>
+
+        <br />
+        <br />
+        <br />
+
+        <Button2
+          variant="contained"
+          color="primary"
+          onClick={() => this.onClickButton()}
+        >
+          {this.state.x}
+        </Button2>
+      </React.Fragment>
     );
   }
 }
